@@ -1,0 +1,74 @@
+{% extends 'base.html' %}<!--- Because we're in a deeper level we do not need to have the extra level --->
+{% load staticfiles %}
+
+{% block content %}
+<div class="about-me-parallax">
+	<div class="about-me-container">
+		<h1>About me:</h1>
+		<p>We're a T-Shirt print pressing company that can do custom designs, further down
+		the site you'll see our portfolio of previous work that i've personally done. We're a T-Shirt print pressing company that can do custom designs, further down
+		the site you'll see our portfolio of previous work that i've personally done. We're a T-Shirt print pressing company that can do custom designs, further down
+		the site you'll see our portfolio of previous work that i've personally done. We're a T-Shirt print pressing company that can do custom designs, further down
+		the site you'll see our portfolio of previous work that i've personally done. We're a T-Shirt print pressing company that can do custom designs, further down
+		the site you'll see our portfolio of previous work that i've personally done. 
+		</p>
+	</div>
+</div>
+
+<div class="parallax-portfolio">
+	<div class="gallery-container">
+		<div class="gallery-details">
+			<h3>808Print's Work Portfolio</h3>
+		</div>
+		<div class="gallery-grid">
+			<div class="grid-item">
+				<img class="header-logo" src="{% static 'img/logo.jpg' %}" alt=""/>
+			</div>
+			<div class="grid-item">
+				<img class="header-logo" src="{% static 'img/logo.jpg' %}" alt=""/>
+			</div>
+			<div class="grid-item">
+				<img class="header-logo" src="{% static 'img/logo.jpg' %}" alt=""/>
+			</div>
+			<div class="grid-item">
+				<img class="header-logo" src="{% static 'img/logo.jpg' %}" alt=""/>
+			</div>
+			<div class="grid-item">
+				<img class="header-logo" src="{% static 'img/logo.jpg' %}" alt=""/>
+			</div>
+			<div class="grid-item">
+				<img class="header-logo" src="{% static 'img/logo.jpg' %}" alt=""/>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="contact-parallax">
+	<div class="contact-container">
+		<div class="email-company">
+			<h3>Have any questions? Contact me below!</h3>
+			<form action="">
+				<label for='email'>Email</label>
+				<input type='text' id='email_add' placeholder="Your email address..">
+
+				<label for='subject'>Subject</label>
+				<input type='text' id='subject_field' placeholder="Subject, be specific">
+				
+				<label for='message'>Message</label>
+				<textarea type='text' if='message_field' placeholder="Write your message here.."></textarea>
+				
+				<input type='submit' value='Submit'>
+			</form>
+		</div>
+		<div class="newsletter-company">
+			<h3>Stay in touch with the best offers and updates!</h3>
+			<form action="">
+				<label for='email'>Email</label>
+				<input type='text' id='email_subscription' placeholder="Your email address..">
+				<input type='submit' value='Submit'>
+			</form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

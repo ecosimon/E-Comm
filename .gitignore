@@ -1,0 +1,15 @@
+#gitignore file
+.DS_STORE
+.DS_Store
+
+# venv
+bin/ 
+include/
+pip-selfcheck.json
+.env
+.venv
+env/
+venv/
+ENV/
+
+static/
