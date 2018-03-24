@@ -2,73 +2,100 @@
 {% load staticfiles %}
 
 {% block content %}
-<div class="about-me-parallax">
-	<div class="about-me-container">
-		<h1>About me:</h1>
-		<p>We're a T-Shirt print pressing company that can do custom designs, further down
-		the site you'll see our portfolio of previous work that i've personally done. We're a T-Shirt print pressing company that can do custom designs, further down
-		the site you'll see our portfolio of previous work that i've personally done. We're a T-Shirt print pressing company that can do custom designs, further down
-		the site you'll see our portfolio of previous work that i've personally done. We're a T-Shirt print pressing company that can do custom designs, further down
-		the site you'll see our portfolio of previous work that i've personally done. We're a T-Shirt print pressing company that can do custom designs, further down
-		the site you'll see our portfolio of previous work that i've personally done. 
-		</p>
-	</div>
-</div>
-
-<div class="parallax-portfolio">
-	<div class="gallery-container">
-		<div class="gallery-details">
-			<h3>808Print's Work Portfolio</h3>
+<div class="landing-about-us" id="about">
+	<div id="landing-logo" style="display:none;height:500px;width:400px;background-color:black;">
+		<div class="description">
+			<img src="{% static 'img/resized.jpg' %}">
 		</div>
-		<div class="gallery-grid">
-			<div class="grid-item">
-				<img class="header-logo" src="{% static 'img/logo.jpg' %}" alt=""/>
-			</div>
-			<div class="grid-item">
-				<img class="header-logo" src="{% static 'img/logo.jpg' %}" alt=""/>
-			</div>
-			<div class="grid-item">
-				<img class="header-logo" src="{% static 'img/logo.jpg' %}" alt=""/>
-			</div>
-			<div class="grid-item">
-				<img class="header-logo" src="{% static 'img/logo.jpg' %}" alt=""/>
-			</div>
-			<div class="grid-item">
-				<img class="header-logo" src="{% static 'img/logo.jpg' %}" alt=""/>
-			</div>
-			<div class="grid-item">
-				<img class="header-logo" src="{% static 'img/logo.jpg' %}" alt=""/>
-			</div>
+	</div>
+	<div id="about-us-fade" style="display:none;height:300px;width:500px;background-color:black;">
+		<span>
+			<a href="" id="close-btn">
+				<i class="fa fa-times" style="color:white"></i>
+			</a>
+		</span>
+		<div class="description">
+			<h2>Welcome to 808Prints!</h2>
+			<p>We're a local shirt print pressing company!</p>
 		</div>
 	</div>
 </div>
 
-<div class="contact-parallax">
-	<div class="contact-container">
-		<div class="email-company">
-			<h3>Have any questions? Contact me below!</h3>
-			<form action="">
-				<label for='email'>Email</label>
-				<input type='text' id='email_add' placeholder="Your email address..">
-
-				<label for='subject'>Subject</label>
-				<input type='text' id='subject_field' placeholder="Subject, be specific">
-				
-				<label for='message'>Message</label>
-				<textarea type='text' if='message_field' placeholder="Write your message here.."></textarea>
-				
-				<input type='submit' value='Submit'>
-			</form>
+<div class="landing-work-port">
+	<div class="img-gallery">
+		<div class="container">
+			<h2>Work Portfolio</h2>
 		</div>
-		<div class="newsletter-company">
-			<h3>Stay in touch with the best offers and updates!</h3>
-			<form action="">
-				<label for='email'>Email</label>
-				<input type='text' id='email_subscription' placeholder="Your email address..">
-				<input type='submit' value='Submit'>
-			</form>
+		<div class="container">
+			<ul class="gallery">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
 		</div>
 	</div>
 </div>
 
+<div class="landing-newsletter" id="newsletter">
+	<form>
+		<div class="container">
+			<h2>Subscribe to our Newsletter</h2>
+			<p style="font-size:20px;">If we ever have any promotions, 808prints would update its newsletter database
+			with an email. 808Prints respects the customers space so we will only email for this purpose
+			only. </p>
+		</div>
+		
+		<div class="container" style="background-color: white">
+			<input type="text" placeholder="Name" name="name">
+			<input type="text" placeholder="Email Address" name="email">
+		</div>
+		
+		<div class="container">
+			<input type="submit" value="Subscribe">
+		</div>
+	</form>
+</div>
+
+<div class="landing-contact">
+
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#about-fade").click(function(e) {
+			$("body, html").animate({
+				scrollTop: $("#about").offset().top
+				}, 1000);
+			$("#landing-logo").fadeOut();
+			$("#about-us-fade").fadeIn(2000);
+			$(".description").fadeIn(2000);
+			$("#close-btn").click(function(e) {
+				$("#about-us-fade").fadeOut();
+				$("#landing-logo").fadeIn(2000);
+				e.preventDefault();
+				});
+			e.preventDefault();
+		});
+	});
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#landing-logo").fadeIn(2000);
+	});
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#newslet").click(function(e) {
+			$("body, html").animate({
+				scrollTop: $("#newsletter").offset().top
+			}, 1000);
+			e.preventDefault();
+		});
+	});
+</script>
 {% endblock %}

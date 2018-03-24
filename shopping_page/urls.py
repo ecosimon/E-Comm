@@ -1,6 +1,6 @@
-import django.conf.urls import url
+from django.conf.urls import url
 from . import views
 
-urlpattern = {
-
-}
+urlpatterns = [
+    url(r'^$', views.shopping_view, name="shop")
+]
