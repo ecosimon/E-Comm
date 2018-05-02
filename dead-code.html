@@ -1,0 +1,108 @@
+<!-- Dead code catalog -->
+# def validate_email(request):
+    # email = request.GET.get('email', None)	
+	
+    # data = {
+        # 'is_taken': NewsletterSub.objects.filter(email__iexact=email).exists()
+    # }
+	
+    # return JsonResponse(data)
+	
+# url(r'^ajax/validate_email/$', views.validate_email, name='validate_email')
+
+ # dict = {}
+    # for x in samples:
+        # if(x):
+            # dict[x] = (settings.MEDIA_URL + str(x.photo_url))
+            # print(dict)
+    # for x in samples: <-- this is fors debugging
+        # print(settings.MEDIA_URL + str(x.photo_url))
+		
+		
+	<!-- <button id="btns">Click</button>
+	<div class="example">
+	</div> -->
+	
+
+	
+	<!-- <script type="text/javascript">
+	$(document).ready(function() {
+		$("#btns").click(function(e) {
+			e.preventDefault();
+			$(".example").css('display', 'block');
+			
+			$(".example").click(function() {
+				$(".example").css('display', 'none');
+			});
+		});
+	});
+</script> -->
+		
+<!-- ajax function call discontinued for now.
+$("#id_email").change(function() {
+		console.log($(this).val());
+		
+		var email = $(this).val();
+		$.ajax({
+		    url: '{% url "validate_email" %}',
+			data: {
+				'email': email
+			},
+			dataType: 'json',
+			success: function(data) {
+				if (data.is_taken) {
+					alert('error');
+				}
+			}
+		});
+	});
+-->	
+
+
+
+using this in a moment
+$("#news-form").each(function() {
+				this.reset();
+			});
+			
+			
+			
+			
+@csrf_exempt
+# def new_subscriber(request):
+    # if request.method == 'POST':
+        # info = request.POST.get('the-data')
+		
+        # form = NewsLetterSignUp(info)
+        # if form.is_valid():
+            # cd = form.cleaned_data
+            # new_sub = NewsletterSub(name=cd.get('name'), email=cd.get('email'))
+            # new_sub.save()
+    
+    # data = { success: 'success' }	
+		
+    # return JsonResponse(data)
+	
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#news").on('submit', function(e) {
+			e.preventDefault();
+			console.log($(this).serialize());
+			
+			$.ajax({
+				url: '{% url "subscriber" %}',
+				data: {
+					'the-data': $(this).serialize()
+				},
+				type: 'POST',
+				
+				success: function(data) {
+					console.log("Your email has been subscribe!");
+				}
+			});	
+		});
+	});
+</script>
+
+

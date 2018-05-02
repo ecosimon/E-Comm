@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="wil-serv">
+	<div class="container">
+		<h1>Services</h1>
+		<p>808Prints have its own online store with default items that are branded by us. We also accept
+		online orders from your requests, for more specifics you can email us and follow up with more details. We use Square for 
+		our online transactions.
+		</p>
+		<p><b>Pricing:</b> $25 per T-shirt.</p>
+	</div>
+</div>
+
+<div class="services-contact">
+	<form>
+		<div class="container">
+			<h1>Contact us for a <i>FREE QUOTE!</i></h1>
+			<p style="font-size:20px;">If you have any questions or concerns, send an email to me!</p>
+		</div>
+		
+		<div class="container" style="background-color:white">
+			<input type="text" placeholder="Email Address" name="email">
+			<input type="text" placeholder="Subject" name="subject">
+			<textarea type="textarea" placeholder="Write something here.." name="desc"></textarea>
+		</div>
+		
+		<div class="container">
+			<input type="submit" value="Send">
+		</div>
+	</form>
+</div>
+
+<!--- This can be used for anything, for now leave it. --->
+<script type="text/javascript">
+	$(document).ready(function() {
+		var btn = document.getElementById("#btn");
+		var modal = document.getElementById(".myModal");
+		
+		btn.click(function(){
+			modal.style.display = block;
+			}
+</script>
+{% endblock %}

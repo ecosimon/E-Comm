@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="landing-logo">
+	<div id="fade-in-logo" style="display:none;">
+		<img src="{% static 'img/resized.jpg' %}">
+	</div>
+</div>
+
+<div class="landing-about-us">
+	<div class="about-us">
+		<p>808Prints is about engaging with the customer and giving the best quality designs that we can offer! Here are some of our work in the past!
+		</p>
+	</div>
+	
+	<div class="work-port-container">
+		<ul class="gallery">
+			{% for x in samples %}
+					<li><img class="image" src={{ x.photo_url.url }}><p class="hide">{{ x.descriptions }}</p></li>
+			{% endfor %}
+		</ul>
+	</div>
+	
+	<div id="g-modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<img id="input-img" src=""/>
+			<p class="text"></p>
+		</div>
+	</div>
+</div>
+
+<div class="services-newsletter" id="newsletter">
+	<form id="news" method="post">
+	{% csrf_token %}
+		<div class="container">
+			<h1>Subscribe to our Newsletter</h1>
+			<p>If we ever have any promotions, 808prints would update its newsletter database
+			with an email. 808Prints respects the customers space so we will only email for this purpose
+			only. </p>
+		</div>
+		
+		<div class="container">
+			{{ form }}
+			
+		</div>
+		
+		<div class="container">
+			<input id="email-btn" type="submit" value="Subscribe">
+		</div>
+	</form>
+	
+	<div id="n-modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<p>You are subscribed! A greeting email has been sent to your inbox.</p>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#fade-in-logo").fadeIn(4000);
+	});
+		
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".image").click(function(e) {
+			e.preventDefault();
+			var img = $(this).attr('src');
+			var children = $(this).next('p').text(); <!-- .next() grabs the adjacent element -->
+			
+			$("#input-img").attr('src', img);
+			$(".text").text(children);
+			$("#g-modal").css('display', 'block');
+
+			$("#g-modal").click(function() {
+				$("#g-modal").css('display', 'none');
+			});
+			
+		});
+	});
+</script>
+		
+{% endblock %}
