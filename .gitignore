@@ -13,3 +13,7 @@ venv/
 ENV/
 
 static/
+
+staticfiles/
+/staticfiles/
+media/
