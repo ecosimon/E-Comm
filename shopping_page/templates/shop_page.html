@@ -4,23 +4,20 @@
 {% block content %}
 <div class="shop-layout">
 	<div class="content-information">
-		<div class="basic-info">
-		
-		</div>
-		
 		<div class="shopping-cart">
-			
+			<p><i class="fas fa-shopping-cart"></i>
+			Your cart is empty!
+			</p>
 		</div>
 	</div>
 
 	<div class="shopping-catalog">
 		<div class="shirt-gallery">
-			<a href=""></a>
-			<a href=""></a>
-			<a href=""></a>
-			<a href=""></a>
-			<a href=""></a>
-			<a href=""></a>
+			{% for x in product %}
+				<li><img class="item" src={{ x.photo_url.url }}>
+				<p>Title: {{x.title}}</p><p>Price: {{x.price}}</p>
+				<p>Stock: {{x.stock}}</p></li>
+			{% endfor %}
 		</div>
 	</div>
 	

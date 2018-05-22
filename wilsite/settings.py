@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # allow all host headers
 ALLOWED_HOSTS = ['*']
@@ -83,10 +83,10 @@ WSGI_APPLICATION = 'wilsite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'wilsite',
-        'USER': 'postgres',
-        'PASSWORD': 'trashcan!@#4',
-        'HOST': 'localhost',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
         'PORT': '',
     }
 }
@@ -140,10 +140,17 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-CSRF_COOKIER_SECURE = True
-SESSION_COOKIE_SECURE = True
+# CSRF_COOKIER_SECURE = True
+# SESSION_COOKIE_SECURE = True
+#'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'
+
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = 587
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = True
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())

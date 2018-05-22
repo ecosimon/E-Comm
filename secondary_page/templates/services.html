@@ -14,16 +14,15 @@
 </div>
 
 <div class="services-contact">
-	<form>
+	<form method="post">
+	{% csrf_token %}
 		<div class="container">
 			<h1>Contact us for a <i>FREE QUOTE!</i></h1>
 			<p style="font-size:20px;">If you have any questions or concerns, send an email to me!</p>
 		</div>
 		
 		<div class="container" style="background-color:white">
-			<input type="text" placeholder="Email Address" name="email">
-			<input type="text" placeholder="Subject" name="subject">
-			<textarea type="textarea" placeholder="Write something here.." name="desc"></textarea>
+			{{ form }}
 		</div>
 		
 		<div class="container">
@@ -31,15 +30,4 @@
 		</div>
 	</form>
 </div>
-
-<!--- This can be used for anything, for now leave it. --->
-<script type="text/javascript">
-	$(document).ready(function() {
-		var btn = document.getElementById("#btn");
-		var modal = document.getElementById(".myModal");
-		
-		btn.click(function(){
-			modal.style.display = block;
-			}
-</script>
 {% endblock %}
