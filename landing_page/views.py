@@ -6,6 +6,13 @@ from .forms import *
 
 # Create your views here.
 def index_view(request):
+    """
+    This function is the landing page function that processes all the given data of the landing_page. 
+    It takes in a post request from the newsletter submission and processes the data through validation.
+    If the request was a post, then sets a form instance of NewsLetterSignUp and placing the post inside it.
+    It is then passed a form validation, if it passes than a new model is created called NewsLetterSub and saved in the database.
+    After submitting, an email is sent to the subscriber and then returned back to the index page with an empty form.
+    """
     samples = SampleShirt.objects.all()
 
     template = 'landing.html'
@@ -32,4 +39,7 @@ def index_view(request):
     return render(request, template, context)
 	
 def about_me_view(request):
+    """
+    This function processes the about me page for Wilson.
+    """
     return render(request, 'about-wilson.html', {})	
