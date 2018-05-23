@@ -24,4 +24,6 @@ In secondary_page, it was added after the second meeting with Mr. Mei. Its purpo
 808Prints services, followed by a contact us form. This form takes in Email, Subject and Message inputs, all String 
 values. When submitted, the mail will be send to my email by default for testing purposes.
 
-Lastly the shopping_page app is still work in progress and needs to be sent.
+Lastly the shopping_page app has a small mock up implemented displaying the image of a product and preceeding attributes 
+that follow a product for sale. As of the moment, there is no online payment implemented because of lack of time for research 
+and implementation.
