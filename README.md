@@ -27,3 +27,14 @@ values. When submitted, the mail will be send to my email by default for testing
 Lastly the shopping_page app has a small mock up implemented displaying the image of a product and preceeding attributes 
 that follow a product for sale. As of the moment, there is no online payment implemented because of lack of time for research 
 and implementation.
+
+*With that being said let's move on to setting up environment
+
+### In order for this project to work on your own local environment ###
+### These instructions will solely be for Windows ###
+
+First, create a new folder for this project.
+
+Change directory to that folder, if you haven't already, install Python 3.6 and set it in your PATH as well.
+
+We will now move on to setting up our virtual environment.
