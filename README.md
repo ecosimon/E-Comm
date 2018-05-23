@@ -4,26 +4,24 @@ This is a work in progress for my employer Wilson Mei.
 
 ### What is this repository for? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+*This repository is for my instructor to view and inspect my code progress.
 
-### How do I get set up? ###
+The files you see now is the root, the first three folders are the main apps of the project. 
+Landing_page, secondary_page and shopping_page. Each of these apps have their own respective purpose.
+wilsite folder is the project folder that contains the settings.py and the main urls.py.
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+In the landing_page app, its purpose is to provide the user landing onto the page with the fading logo, 
+followed by the work gallery presented as the second parallax. When the images are clicked in the gallery 
+a modal will pop up fading out the background and expanding the current image bigger and providing a 
+description of the photo, sample photos were included. Lastly the newsletter feature is the last parallax 
+of the page, it takes in both String values for Name and Email, if an empty input is submitted a validation 
+error will be invoked.
 
-### Contribution guidelines ###
+Another page was added in the landing_page app. Its template is called about-wilson, this template/page is solely 
+about Mr. Mei's input on the company.
 
-* Writing tests
-* Code review
-* Other guidelines
+In secondary_page, it was added after the second meeting with Mr. Mei. Its purpose is to provide customers with 
+808Prints services, followed by a contact us form. This form takes in Email, Subject and Message inputs, all String 
+values. When submitted, the mail will be send to my email by default for testing purposes.
 
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+Lastly the shopping_page app is still work in progress and needs to be sent.
