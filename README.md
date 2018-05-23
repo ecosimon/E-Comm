@@ -50,6 +50,13 @@ You should see (venv) on your left side of the terminal next to your input, that
 Let's install/upgrade pip to the latest version, command: pip install --upgrade pip
 followed by the command to install django's framework: pip install django~=1.11.0
 
+Now that we have pip and Django installed in this directory, we need to grab a SECRET_KEY for this working project repo.
+We'll create a fodder project to create a new key for the project.
+First run this command in the terminal in your project directory: admin-django.exe startproject samplesite .
+Exactly like that, and after entering that code you should see a samplesite folder in the same directory. 
+Go into that folder, right click settings.py into your editor and copy down the SECRET_KEY = 'dfdfdfdfs key adasdsa'
+that key will be used later on for the cloned repo.
+
 ### Install PostgreSQL and follow its instructions to set in PATH
 It is very important that you save the information user/pass for the login of your own database.
 To make it easier on yourself, set your username as postgres and password something relatively easy.
@@ -69,7 +76,7 @@ PATH as well. The Git Bash is used for cloning and pulling this repository to yo
 ### Open your git bash to clone this repository
 
 As the title states, clone this repository in your working directory and switch back to your terminal.
-After cloning you'll see two things, your venv folder and the Wil-site folder. 
+After cloning you'll see, your venv folder, the samplesite and the Wil-site folder. 
 Change directory to Wil-site and run the command: pip install -r requirements.txt
 this installs all the required modules for the project.
 
@@ -89,7 +96,13 @@ You should be able to see settings.py, right click settings.py and open it in th
 One of the modules that we've installed in the requirements.txt was the Python Decouple module.
 This module partitions private information from the codebase to avoid any sensitive information stolen.
 
-Now that we're in the settings.py, scroll down and you'll see, INSTALLED_APPS in order for the 3 apps that 
+Now that we're in the settings.py, scroll down and you'll see, is SECRET_KEY = config('SECRET_KEY'),
+remember that we saved the secret_key from the samplesite fodder project? Now is the time to use that key.
+First we need to create a new page in your editor, type SECRET_KEY = 'your secret key' and save it as .ENV for the title 
+and save it inside the root project folder where you see manage.py. The .ENV file and the config() function you see 
+in the settings is the works of the DECOUPLE module.
+
+INSTALLED_APPS in order for the 3 apps that 
 I have mentioned to work in this project, those apps needed to be added in this list.
 
 ROOT_URLCONF is pointed towards the wilsite projects folder, urls.py. That is the main path and we'll get to that
@@ -97,9 +110,9 @@ in a bit.
 
 Now in the DATABASES, in ENGINE: we've installed the Postgres module for this backend which was psycopg2.
 You notice the NAME and its value config'DB_NAME')? We'll thats what decouple does for our code. 
-To get your own decouple file started, in the same editor, create a new page. In that page, 
-type up DB_NAME = 'wilsite', DB_USER = 'name of you database, it should be postgres', DB_PASSWORD = 'your db pw' 
-and lastly DB_HOST = 'localhost' everything just like that except for DB_USER and DB_PASSWORD if you have it differently. 
+Open the previously saved .ENV file and type up DB_NAME = 'wilsite', DB_USER = 'name of you database, it 
+should be postgres', DB_PASSWORD = 'your db pw' and lastly DB_HOST = 'localhost' everything just like that 
+except for DB_USER and DB_PASSWORD if you have it differently. 
 Once you've finished, save this file as .ENV in the title and save this in your ROOT project where you see manage.py in.
 
 Scroll all the way down and you'll see STATIC / MEDIA variables, these are already mentioned in the final report.
@@ -127,7 +140,7 @@ object. You can read the documentation in the file to get a better understanding
 Moving on to forms.py, as we mentioned in the views.py when posting information, we handle the information with forms. In this module 
 we create a form object to handle the appropriate information being posted, in this case NewsLetterSignUp which takes in String values for name and email. 
 
-Moving on to urls.py, i've mentioned about the extension of urls in the included url path of wilsite/urls.py. Back in the project urls.py when we included the landing_page.urls it was pointing to this file. What that does is it takes the url paths of these extensions and include it to the main url path. So for example, if we land on localhost:8000/ we're actually in the index of landing_page. 
+Moving on to urls.py, i've mentioned about the extension of urls in the included url path of wilsite/urls.py. Back in the project urls.py when we included the landing_page.urls it was pointing to this file. What that does is, it takes the url paths of these extensions and include it to the main url path. So for example, if we land on localhost:8000/ we're actually in the index of landing_page. 
 
 Within the same landing_page directory, go into templates and you'll see Base.html which extends to all other apps templates. Landing.html is the landing page of the app and about-wilson is a side page about Wilson's input.
 
@@ -141,3 +154,4 @@ If you set all your configs correctly in your .ENV file you should have no probl
 
 
 CAVEATS: At the moment I can't seem to get the staticfiles to serve on the repository, currently handling this issue.
+For the mean time i'll include the pictures of the site along with the physical report and also through email to you.
