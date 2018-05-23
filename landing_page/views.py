@@ -12,6 +12,12 @@ def index_view(request):
     If the request was a post, then sets a form instance of NewsLetterSignUp and placing the post inside it.
     It is then passed a form validation, if it passes than a new model is created called NewsLetterSub and saved in the database.
     After submitting, an email is sent to the subscriber and then returned back to the index page with an empty form.
+	
+    Inputs: When submitting data to the form NewsLetterSignUp, the inputs for Name and Email both take String values.
+	
+    Variables: 
+        samples - makes a queryset to the database and pulls all the existing SampleShirt model objects.
+        template - holds the landing.html string name which will be passed in the rendering function.
     """
     samples = SampleShirt.objects.all()
 

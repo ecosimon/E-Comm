@@ -5,6 +5,10 @@ from . import views
 
 """
 The url portal for landing_page included as an extension inside the project urls.py
+This file is basically an extension of the wilsite/urls.py,
+for example: 
+	localhost:8000/ <--- Would redirect to the index or landing_page of the website.
+	localhost:8000/about-me <--- Would redirect you to the about-me page for Mr. Mei's input.
 """
 
 
