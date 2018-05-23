@@ -130,19 +130,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-
 STATICFILES_DIR = (
 	os.path.join(BASE_DIR, 'static'),
 )
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# CSRF_COOKIER_SECURE = True
-# SESSION_COOKIE_SECURE = True
-#'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'
 
 EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_PORT = 587
