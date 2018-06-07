@@ -16,3 +16,9 @@ ENV/
 db.sqlite3
 myvenv
 __pycache__
+
+build
+dist
+django_cart.egg-info
+.idea
+*~

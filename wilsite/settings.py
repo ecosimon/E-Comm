@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'landing_page',
     'secondary_page',
     'shopping_page',
+    'django_cart.cart',
 ]
 
 MIDDLEWARE = [
@@ -144,7 +145,9 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
 
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+
+
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
 
 # django_heroku.settings(locals())

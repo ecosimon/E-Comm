@@ -1,4 +1,9 @@
 from django.db import models
+from django_cart.cart.models import Cart, ItemManager, Item
+from django_cart.cart.cart import Cart
+
+from .choices import *
+
 
 class ShopShirts(models.Model):
     """
@@ -8,18 +13,21 @@ class ShopShirts(models.Model):
     of the current stock.
     """
     title = models.CharField(max_length=255)
+    shirt_id = models.AutoField(primary_key=True)
     descriptions = models.CharField(max_length=255)
     photo_url = models.FileField(upload_to='shopShirts/', blank=True, null=True)
-    price = models.DecimalField(max_digits=4, decimal_places=2, blank=True)
+    price = models.DecimalField(max_digits=5, decimal_places=2, blank=True)
+    size = models.CharField(max_length=10, choices=SHIRT_SIZES, default='SMALL')
+    quantity = models.PositiveSmallIntegerField(default=0)
     available = models.BooleanField(default=False)
-    stock = models.PositiveIntegerField(blank=True, null=True)
+    shopping_cart = models.ForeignKey('ShoppingCart', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 	
     def __str__(self):
         """
         Return the string value of the item.
         """	
-        return self.title
+        return self.shirt_id
 		
 		
 class ShoppingCart(models.Model):
