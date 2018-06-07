@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django_cart.cart.models import Cart, ItemManager, Item
+from django_cart.cart.cart import Cart
 from .models import *
 
 # Create your views here.
@@ -9,3 +11,4 @@ def shopping_view(request):
     product = ShopShirts.objects.all()
     context = {'product': product}
     return render(request, 'shop_page.html', context)
+	
