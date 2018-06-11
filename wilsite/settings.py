@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = False
 
 # allow all host headers
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['wilsonsite.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -153,7 +153,7 @@ SESSION_COOKIE_SECURE = True
 SECURE_BROWSER_XSS_FILTER = True
 
 
-# db_from_env = dj_database_url.config(conn_max_age=500)
-# DATABASES['default'].update(db_from_env)
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
