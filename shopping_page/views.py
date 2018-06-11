@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from django_cart.cart.models import Cart, ItemManager, Item
-from django_cart.cart.cart import Cart
+from cart.models import Cart, ItemManager, Item
+from cart.cart import Cart
 from .models import *
 
 # Create your views here.

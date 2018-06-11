@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'landing_page',
     'secondary_page',
     'shopping_page',
-    'django_cart.cart',
+    'cart',
 ]
 
 MIDDLEWARE = [
