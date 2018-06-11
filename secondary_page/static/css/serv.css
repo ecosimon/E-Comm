@@ -1,0 +1,73 @@
+.services-newsletter {
+	background-image: url("../img/land-page.jpg");
+	height: 35%;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin: 0 50px 60px 50px;
+}
+
+.services-contact {
+	background-image: url("../img/filler-page.jpg");
+	height: 80%;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin: 0 50px 50px 50px;
+}
+
+form {
+	width: 60%;
+	margin: auto;
+}
+
+.services-contact form {
+	width: 60%;
+	margin: auto;
+	padding-left: 80px;
+}
+
+.wil-serv {
+	background-image: url("../img/filler-page.jpg");
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	height: 50%;
+	margin: 0 50px;
+}
+
+.container {
+	padding: 10px;
+	background-color: #f1f1f1;
+}
+
+.container > p {
+	padding: 0 30px;
+	font-size: 28px;
+}
+
+.container h1 {
+	text-align: center;
+}
+
+input[type=text], textarea, input[type=submit] {
+	width: 100%;
+	padding: 12px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+
+input[type=submit] {
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+}
+
+input[type=submit]:hover {
+	opacity: 0.8;
+}

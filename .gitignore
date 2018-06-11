@@ -12,9 +12,6 @@ env/
 venv/
 ENV/
 
-static/
-staticfiles/
-media/
 
 *.pyc
 db.sqlite3

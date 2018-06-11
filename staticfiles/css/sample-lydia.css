@@ -1,0 +1,37 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+#WHITE-BACKGROUND,
+.white-background {
+	background-color: #FFF;
+}
+
+.grid-container {
+	display: grid;
+	height: inherit;
+	grid-template-rows: 100px 1fr;
+	grid-template-areas: "header"
+						 "content";
+}
+
+.header-container {
+	grid-area: header;
+	display: grid;
+	grid-template-columns: 40px 1fr;
+	grid-template-areas: "logo nav-menu";
+}
+
+.header-logo {
+	grid-area: logo;
+}
+
+.header-nav-menu {
+	grid-area: nav-menu;
+}
+
+.menu-container {
+	grid-area: content;
+}
