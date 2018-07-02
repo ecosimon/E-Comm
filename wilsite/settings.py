@@ -25,7 +25,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+# DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = True
 
 # allow all host headers
 ALLOWED_HOSTS = ['wilsamplesite.herokuapp.com', '.herokuapp.com', 'localhost']
@@ -83,20 +84,20 @@ WSGI_APPLICATION = 'wilsite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {
-	'default': dj_database_url.config(
-		default=config('DATABASE_URL')
-	)
-}
-
 # DATABASES = {
-    # 'default': {
-        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # 'NAME': config('DB_NAME'),
-        # 'USER': config('DB_USER'),
-        # 'PASSWORD': config('DB_PASSWORD'),
-    # }
+	# 'default': dj_database_url.config(
+		# default=config('DATABASE_URL')
+	# )
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+    }
+}
 
 
 # Password validation
@@ -148,11 +149,7 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIR = (
-	os.path.join(BASE_DIR, '../landing_page/static'),
-	os.path.join(BASE_DIR, '../secondary_page/static'),
-	os.path.join(BASE_DIR, '../shopping_page/static'),
-	os.path.join(BASE_DIR, '../cart/static'),
-	os.path.join(BASE_DIR, 'staticfiles'),
+	os.path.join(BASE_DIR, 'static'),
 )
 
 # STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
@@ -161,7 +158,8 @@ STATICFILES_DIR = (
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'sdev-static'
-AWS_S3_CUSTOM_DOMAIN = 's3.amazonaws.com'
+AWS_S3_REGION_NAME = 'us-east-1'
+AWS_S3_CUSTOM_DOMAIN = '{0}.s3.amazonaws.com'.format(AWS_STORAGE_BUCKET_NAME)
 AWS_S3_OBJECT_PARAMETER = {
 	'CacheControl': 'max-age = 86400',
 }
@@ -172,7 +170,7 @@ STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 
 # media storage
 
-MEDIA_URL = '/media/'
+MEDIA_URL = 'http://s3.{0}.amazonaws.com/{1}/media/'.format(AWS_S3_REGION_NAME, AWS_STORAGE_BUCKET_NAME)
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIAFILES_LOCATION = 'media'
