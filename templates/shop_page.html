@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="shop-layout">
+	<div class="content-information">
+		<div class="shopping-cart">
+			<p><i class="fas fa-shopping-cart"></i>
+			<a href="{% url 'cart_items' %}"><input type="button" value="View Cart"></a>
+			</p>
+		</div>
+	</div>
+
+	<div class="shopping-catalog">
+		<div class="shirt-gallery">
+			{% for item in product %}
+				<li><img class="item">
+				<p>{{item.title}}</p><p>${{item.price}}</p>
+				<form action='{% url "add" item.id %}' method='post'>
+					{% csrf_token %}
+					{{ cart_form }}
+					<input type="submit" value="Add to cart">
+				</form>
+				
+			    </li>
+			{% endfor %}
+		</div>
+	</div>
+	
+</div>
+{% endblock %}

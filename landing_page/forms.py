@@ -11,8 +11,7 @@ class NewsLetterSignUp(forms.Form):
         name - takes in a String values
         email - takes in a String value
     """
-    name = forms.CharField(max_length=255)
-    email = forms.CharField(max_length=255)
+    email = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'placeholder': 'SampleEmail@blah.com'}))
 	
     def clean_email(self):
         """
@@ -29,14 +28,3 @@ class NewsLetterSignUp(forms.Form):
             raise forms.ValidationError('This email already exists!')
         return cd_email
 		
-    def clean_name(self):
-        """
-        This clean method overides the forms clean_method. Its purpose is to validate 
-        the data and returns it.
-        If no input is submitted in the input tag, than a validation error will be invoked.
-        """
-        cd_name = self.cleaned_data.get('name')
-		
-        if not cd_name:
-            raise forms.ValidationError('Name is required for identification!')
-        return cd_name

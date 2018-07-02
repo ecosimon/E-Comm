@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div id="serv-you" type="hidden"></div>
+<div class="wil-serv">
+	<div class="wil-text">
+		<p id='about-us-title'>Services</p>
+		<img src='{% static "img/service-fotoe.jpg" %}'/>
+		<p id='serv-text'>We offer full <b>premium screen printing services</b> specializing in plastisol and Soft-hand plastisol ink.  
+		We have a full range of garments to select, from t-shirts, sweaters, hoodies, sweatpants, shorts, tote bags, 
+		etc. Bring your vision to life! <br/><br/> 808Prints has high customer service, fast turnaround time, and competitive pricing. 
+		<br/><br/> Your FAST & QUICK quote is a few clicks away. <br/><br/> ADDITIONAL SERVICES: <br/>
+		Screen Printed Neck Labels<br/> Custom Artwork <br/> Sewn Tags and Labels <br/> Fold and Bag
+		<br/><br/>
+		Please send as much information as possible so we can help you start your project quickly and 
+		efficiently or you can download our Work Order Form and send it to : info@808prints.com
+		</p>
+	</div>
+</div>
+
+<div class="services-contact">
+	<form method="post">
+	{% csrf_token %}
+		<div class="container">
+			<h1>Contact us for a quick, free quote</h1>
+			<p id='qoute-text'>Please send as much information as possible so we can help you start your project quickly and efficiently 
+			or you can download our Work Order form and send it to: info@808prints.com
+			</p>
+		</div>
+		
+		<div class="container" style="background-color:white">
+			{{ form }}
+		</div>
+		
+		<div class="container">
+			<input type="submit" value="Send">
+		</div>
+	</form>
+</div>
+
+
+<div class="service-shop-info">
+	<div class="contact-info">
+		<h1 id='contact'>CONTACT</h1>
+		<p id="left"><u><b>808Prints</b></u><br/>
+		info@808prints.com<br/>2061 West 4th Street<br/>Brooklyn, NY 11223<br/><br/>
+		</p>
+		<p id="right">
+		In-Shop: BY APPOINTMENTS ONLY
+		</p>
+	</div>
+</div>
+
+<script type="text/javascript">
+$("html, body").hide();
+
+$(document).ready(function(e) {
+	location.hash = window.name;
+	var target = location.hash;
+	
+	if (target){
+		setTimeout(function() {
+			$("html, body").scrollTop(0).show();
+			$("html, body").animate({
+				scrollTop: $(target).offset().top
+				}, 1000);
+			}, 0);
+	}else {
+		$("html, body").show();
+	}
+});	
+
+<!-- gallery scroll -->
+	$("#project").click(function(){
+		window.name = "gallery";
+	});
+	
+	<!-- landing logo scroll -->
+	$("#landing").click(function(){
+		window.name = "landing-logo";
+	});
+	
+	<!-- contact information scroll -->
+	$("#contacts").click(function(e){
+		$("html, body").animate({
+			scrollTop: $("#contact").offset().top
+			}, 1000);
+		e.preventDefault();
+	});
+	
+	<!-- landing services scroll -->
+	$("#serv").click(function(e){
+		$("html, body").animate({
+			scrollTop: $("#serv-you").offset().top
+			},  1000);
+		e.preventDefault();
+	});
+
+</script>
+
+{% endblock %}

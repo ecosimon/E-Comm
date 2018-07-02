@@ -7,5 +7,5 @@ The url portal of shopping_page, included in the project folder urls.py
 
 
 urlpatterns = [
-    url(r'^$', views.shopping_view, name="shop")
+    url(r'^$', views.shopping_view, name="shop"),
 ]

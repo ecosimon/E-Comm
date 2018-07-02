@@ -5,11 +5,11 @@ html, body {
 }
 
 * {
-	font-family: 'Karla', sans-serif;
+	font-family: 'Georgia', sans-serif;
 }
 
 #WHITE-BACKGROUND,
-.header-container,
+.header-container, .footer-container,
 .white-background {
 	background-color: #FFFFFF;
 }
@@ -17,7 +17,7 @@ html, body {
 .grid-container {
 	display: grid;
 	height: 100%;
-	grid-template-rows: 90px 1fr;
+	grid-template-rows: 1fr 1fr;
 	grid-template-areas: "menu"
 						 "content";
 }
@@ -25,43 +25,75 @@ html, body {
 .header-container {
 	grid-area: menu;
 	position: fixed;
-	height: 90px;
+	height: 100px;
 	width: 100%;
+	z-index: 1;
+	box-shadow: 0 0.1px 10px grey;
+}
+
+.footer-container {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	height: 60px;
 	z-index: 1;
 }
 
-.header-logo {
+.footer-nav {
+	list-style-type: none;
+	text-align: right;
+	margin: 10px 55px 15px 0px;
+}
+
+.footer-nav li {
 	display: inline-block;
-	margin: auto;
-	padding-left: 20px;
+	padding: 0 5px;
+	color: black;
+	font-size: 35px;
+}
+
+.footer-nav li a {
+	text-decoration: none;
+	color: black;
+}
+
+.header-logo {
+	float: left;
 }
 
 .header-logo a {
-	color: black;
-	font-size: 24px;
 	text-decoration: none;
 }
 
+.logo {
+	height: 90px;
+	width: 190px;
+	margin-left: 50px;
+	margin-top: 5px;
+}
+
 .header-nav-menu {
-	display: inline-block;
-	margin: auto;
-	padding-left: 850px;
+	float: right;
 }
 
 .nav {
 	list-style-type: none;
 	padding: 10px;
-	text-align: center;
 }
 
 .nav li {
 	display: inline-block;
 	padding: 0 20px;
+	margin-right: 30px;
+	margin-top: 5px;
 }
 
 .header-nav-menu > ul > li > a {
+	display: inline-block;
 	text-decoration: none;
 	font-size: 24px;
+	font-weight: bold;
 	color: black;
 }
 
@@ -70,84 +102,135 @@ html, body {
 	height: 100%;
 }
 
+/* landing.html */
 .landing-logo {
-	height: 45%;
+	height: 42%;
 	background-attachment: fixed;
 	background-position: no-repeat;
+}
+
+.landing-about-us {
+	background-image: url("../img/new-landing.jpg");
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 45%;
+	margin: 0px 50px 0 50px;
+}
+
+.services-newsletter {
+	background-image: url("../img/land-page.jpg");
+	height: 37%;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin: 0 50px 0px 50px;
+}
+
+#fade-in-logo {
+	padding-top: 60px;
 }
 
 #fade-in-logo img {
 	display: block;
 	margin: auto;
+	padding-top: 50px;
 }
 
-.landing-about-us {
-	background-image: url("../img/land-page.jpg");
-	background-attachment: fixed;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	height: 40%;
-	margin: 0 50px;
-}
-
+/* about-wilson.html */
 .about-wil {
 	background-image: url("../img/land-page.jpg");
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	height: 85%;
-	margin: 0 50px 40px 50px;
+	height: 700px;
+	margin: 0 50px;
 }
 
+.wil-text {
+	position: relative;
+	top: 100px;
+	left: 318px;
+	height: 500px;
+	width: 800px;
+	background-color: #FFFFFF;
+	font-size: 18px;
+	
+}
 
-#wil-text p {
-	color: white;
+.wil-text a {
+	position: relative;
+	text-decoration: none;
+	bottom: 50px;
+	left: 510px;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+#about-us-title {
 	text-align: center;
-	font-size: 40px;
-	padding-top: 100px;
+	font-weight: bold;
+	font-size: 32px;
+	font-family: 'Georgia';
+	position: inherit;
+	top: 30px;
+}
+
+.about-us-text {
+	margin: 20px;
+	padding: 15px;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.wil-text img {
+	float: right;
+	height: 250px;
+	width: 300px;
+	margin: 40px;
 }
 
 .about-us {
-	margin: 20px;
-	padding-left: 70px;
+	margin: 30px 0px 30px 30px;
+	padding: 50px 0px 50px 30px;
 	float: left;
-	height: 500px;
+	height: 550px;
 	width: 400px;
 }
 
 .about-us p {
-	padding: 20px;
-	font-size: 38px;
+	padding: 50px 0px 0px 25px;
+	font-size: 36px;
 	font-weight: bold;
 	color: white;
 }
 
 .work-port-container {
-	margin: 50px;
+	margin: 30px 0px;
 	float: right;
-	height: 400px;
-	width: 800px;
-	overflow: auto;
+	height: 650px;
+	width: 940px;
 }
 
 .gallery {
 	list-style-type: none;
-	margin: 30px;
-	padding: 10px;
+	padding-top: 75px;
 }
 
 .gallery li {
-	display: block;
-	margin: 20px;
+	display: inline-block;
+	margin: 15px 15px 10px 15px;
 	float: left;
-	width: 200px;
+	width: 170px;
 }
 
 .gallery li img {
-	height: 250px;
+	height: 220px;
 	width: 100%;
+	box-shadow: 0 1px 5px white;
 }
 
 #img-expand img {
@@ -157,8 +240,8 @@ html, body {
 }
 
 ::-webkit-scrollbar {
-	width: 10px;
-	height: 20px;
+	width: 0px;
+	height: 0px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -200,7 +283,7 @@ html, body {
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: 1;
+	z-index: 3;
 	width: 100%;
 	height: 100%;
 }
@@ -210,6 +293,11 @@ html, body {
 	margin: 100px auto;
 	padding: 20px;
 	width: 60%;
+}
+
+.modal-content p {
+	font-size: 18px;
+	font-family: 'Georgia';
 }
 
 .hide {

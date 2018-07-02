@@ -5,9 +5,12 @@ class ContactUs(forms.Form):
     This module is meant for creating a form for Contact Us for users reaching out to the company.
     Email, subject, and message all takes in strings.
     """
-    email = forms.CharField(max_length=255)
-    subject = forms.CharField(max_length=255)
-    message = forms.CharField(widget=forms.Textarea)
+    email = forms.CharField(max_length=255,
+                            widget=forms.TextInput(attrs={'placeholder': 'SampleEmail@blah.com'}))
+    subject = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'placeholder': 'Project Name'}))
+    message = forms.CharField(widget=forms.Textarea(
+                            attrs={'placeholder': 'Tell us more about your project...(design locations, colors, quantity, type of garment, etc..)',
+                            'rows': '5', 'cols': '60'}))
 	
     def clean_email(self):
         """

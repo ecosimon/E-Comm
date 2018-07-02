@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="landing-logo" id='landing-logo'>
+	<div id="fade-in-logo" style="display:none;">
+		<img src="{% static 'img/landin-foto.jpg' %}">
+	</div>
+</div>
+
+<div class="landing-about-us" id='gallery'>
+	<div class="about-us">
+		<p>808Prints is about engaging with the customer and giving the best quality designs that we can offer! Here are some of our work in the past!
+		</p>
+	</div>
+	
+	<div class="work-port-container">
+		<ul class="gallery">
+			{% for x in samples %}
+				<li><img class="image" src={{ x.photo_url.url }}><p class="hide">{{ x.descriptions }}</p></li>
+			{% endfor %}
+		</ul>
+	</div>
+	
+	<div id="g-modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<img id="input-img" src=""/>
+			<p class="text"></p>
+		</div>
+	</div>
+</div>
+
+<div class="services-newsletter">
+	<form id="news" method="post">
+	{% csrf_token %}
+		<div class="container">
+			<p id="container-head">Subscribe to our Newsletter</p>
+			<p>If we ever have any promotions, 808prints would update its newsletter database
+			with an email. 808Prints respects the customers space so we will only email for this purpose
+			only. </p>
+		</div>
+		
+		<div class="container">
+			{{ form }}			
+		</div>
+		
+		<div class="container">
+			<input id="email-btn" type="submit" value="Subscribe">
+		</div>
+	</form>
+</div>
+
+<script type="text/javascript">
+	$("html, body").hide();
+
+	<!-- parallax processing, determines which target to scroll to -->
+	$(document).ready(function(e) {
+		location.hash = window.name;
+		var target = location.hash;
+	
+		if (target){
+			setTimeout(function() {
+				$("html, body").scrollTop(0).show();
+				$("html, body").animate({
+					scrollTop: $(target).offset().top
+					}, 1500);
+				}, 0);
+		}else {
+			$("html, body").show();
+		}
+	});	
+
+	<!-- landing logo -->
+	$(document).ready(function() {
+		$("#fade-in-logo").fadeIn(4000);
+	});
+	
+	<!-- image expanding view -->
+	$(".image").click(function(e) {
+		e.preventDefault();
+		var img = $(this).attr('src');
+		var children = $(this).next('p').text(); <!-- .next() grabs the adjacent element -->
+			
+		$("#input-img").attr('src', img);
+		$(".text").text(children);
+		$("#g-modal").css('display', 'block');
+
+		$("#g-modal").click(function() {
+			$("#g-modal").css('display', 'none');
+		});
+			
+	});
+	
+	<!-- contact scroll -->
+	$("#contacts").click(function() {
+		window.name = "contact";
+	});
+	
+	<!-- services scroll -->
+	$("#serv").click(function() {
+		window.name = "serv-you";
+	});
+	
+	<!-- logo scroll -->
+	$("#landing").click(function(e) {
+		$("body, html").animate({
+			scrollTop: $("#landing-logo").offset().top
+			}, 1000);
+		e.preventDefault();
+	});
+	
+	<!-- gallery scroll -->
+	$("#project").click(function(e) {
+		$("body, html").animate({
+			scrollTop: $("#gallery").offset().top
+			}, 1000);
+		e.preventDefault();
+	});
+</script>
+		
+{% endblock %}

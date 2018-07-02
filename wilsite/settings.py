@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # allow all host headers
 ALLOWED_HOSTS = ['*']
@@ -62,7 +62,7 @@ ROOT_URLCONF = 'wilsite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -144,15 +144,20 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+# SESSION_SAVE_EVERY_REQUEST = True
+
+CART_SESSION_ID = 'cart'
+
 # prevents click jacking
-X_FRAME_OPTIONS = 'DENY'
+# X_FRAME_OPTIONS = 'DENY'
 
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-SECURE_BROWSER_XSS_FILTER = True
+# CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
+# SECURE_BROWSER_XSS_FILTER = True
 
 
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())

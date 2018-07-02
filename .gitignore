@@ -11,7 +11,8 @@ pip-selfcheck.json
 env/
 venv/
 ENV/
-
+staticfiles/
+static/
 
 *.pyc
 db.sqlite3

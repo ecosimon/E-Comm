@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="about-wil">
+	<div class="wil-text">
+		<p id='about-us-title'>ABOUT US</p>
+		<img src='{% static "img/about-us.jpg" %}'/>
+		<p class='about-us-text'>808Prints is a Brooklyn based <b>screen printing shop</b>. 
+		Started in 2017, our core value has always been the same- 
+		Quality work. We specialize in customized apparel such as T-shirts, sweaters, pants, tote bags, and more.<br/><br/>
+		Customized apparels for all of your needs. Family friendly, Corporate merchandise, 
+		or Clothing line- we got you covered.<br/><br/> Quality and Customer Satisfaction are our TOP priorities. <br/><br/></p>
+		<a id='about-move' href='{% url "index" %}'>Move To Projects</a>
+	</div>
+</div>
+
+<script type="text/javascript">
+	<!-- header anchor button scroll to other page -->
+	$("#project").click(function(e){
+		window.name = "gallery";
+	});
+	
+	<!-- current anchor button scroll to other page-->
+	$("#about-move").click(function(e){
+		window.name = "gallery";
+	});
+	
+	<!-- landing logo scroll -->
+	$("#landing").click(function(){
+		window.name = "landing-logo";
+	});
+	
+	<!-- services scroll -->
+	$("#serv").click(function() {
+		window.name = "serv-you";
+	});
+	
+	<!-- contact scroll -->
+	$("#contacts").click(function() {
+		window.name = "contact";
+	});
+</script>
+{% endblock %}

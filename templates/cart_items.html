@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="cart-container">
+	<p> testing testing </p>
+		{% for item in cart %}
+				<span>
+					<img src="">
+				</span>
+				<span>
+					{{ item.product.title }}
+				</span>
+				<span>
+					<form action="{% url 'add' product_id=item.product.id %}" method='post'>
+						{% csrf_token %}
+						{{ item.update_quantity_form.quantity }}
+						{{ item.update_quantity_form.size }}
+						{{ item.update_quantity_form.update }}
+						<input type="submit" value="Update">
+					</form>
+				</span>
+				<span>
+					<a href="{% url 'remove' item.product.id %}">Remove</a>
+				</span>
+				<span>
+					$$ {{ item.price }}
+				</span>
+				<span>
+					$$ {{ item.total_price }}
+				</span>
+				<hr>
+		{% endfor %}
+		
+	<div style="float: right;">
+		<a href="{% url 'shop' %}"><input type="button" value="Back to shop"></a>
+		<a href=""><input type="button" value="Checkout"></a>
+	</div>		
+</div>
+{% endblock %}

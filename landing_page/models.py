@@ -11,7 +11,6 @@ class NewsletterSub(models.Model):
         email - takes in a String value 
         date_added - is automatically generated when the current object is created
     """
-    name = models.CharField(max_length=255, blank=True)
     email = models.CharField(max_length=255, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
 	
