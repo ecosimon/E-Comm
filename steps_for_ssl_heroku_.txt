@@ -1,0 +1,22 @@
+tl:dr;
+We would like to secure our site (via HTTPS)! SSL is the way to do so, however it can be a tricky process. Thanks to a lot of leg work by @eco-simon , we have simplified the steps below.
+
+Steps
+First you need to upgrade your dyno to at least Hobby ($7/mo) to allow for SSL ACM
+Then you are going to want to enable certificates by running this command:
+$ heroku certs:auto:enable
+Make sure your DNS manager (Godaddy) has a record set up like so:
+CNAME
+www
+travelwithyonder.com.herokudns.com
+Then you are going to want to redirect your HTTP to HTTPS. Let's add this line in settings:
+SECURE_SSL_REDIRECT = True
+or even better:
+
+# if statement to overcome .env boolean treatment
+if config('SSL_ON') == 'False':
+	SECURE_SSL_REDIRECT = False
+else:
+	SECURE_SSL_REDIRECT = True
+Resources
+https://devcenter.heroku.com/articles/automated-certificate-management#troubleshooting

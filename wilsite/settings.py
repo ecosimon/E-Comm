@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 from decouple import config
 import dj_database_url
-import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -153,6 +152,7 @@ STATICFILES_DIR = (
 	os.path.join(BASE_DIR, '../secondary_page/static'),
 	os.path.join(BASE_DIR, '../shopping_page/static'),
 	os.path.join(BASE_DIR, '../cart/static'),
+	os.path.join(BASE_DIR, 'staticfiles'),
 )
 
 # STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
@@ -161,7 +161,7 @@ STATICFILES_DIR = (
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'sdev-static'
-AWS_S3_CUSTOM_DOMAIN = '{0}.s3.amazonaws.com'.format(AWS_STORAGE_BUCKET_NAME)
+AWS_S3_CUSTOM_DOMAIN = 's3.amazonaws.com'
 AWS_S3_OBJECT_PARAMETER = {
 	'CacheControl': 'max-age = 86400',
 }
@@ -171,6 +171,10 @@ STATICFILES_LOCATION = 'static'
 STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 
 # media storage
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 MEDIAFILES_LOCATION = 'media'
 DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 
