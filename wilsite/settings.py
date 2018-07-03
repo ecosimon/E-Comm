@@ -15,8 +15,8 @@ from decouple import config
 import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -29,7 +29,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 # DEBUG = True
 
 # allow all host headers
-ALLOWED_HOSTS = ['wilsamplesite.herokuapp.com', '.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['wilsonwebapp.herokuapp.com', '.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -64,7 +64,7 @@ ROOT_URLCONF = 'wilsite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -118,21 +118,21 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['console'],
-             'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
-        },
-    },
-}
+# LOGGING = {
+    # 'version': 1,
+    # 'disable_existing_loggers': False,
+    # 'handlers': {
+        # 'console': {
+            # 'class': 'logging.StreamHandler',
+        # },
+    # },
+    # 'loggers': {
+        # 'django': {
+            # 'handlers': ['console'],
+             # 'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+        # },
+    # },
+# }
 
 
 # Internationalization
@@ -149,12 +149,16 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIR = (
+	os.path.join(BASE_DIR, '../landing_page/static'),
+	os.path.join(BASE_DIR, '../secondary_page/static'),
+	os.path.join(BASE_DIR, '../shopping_page/static'),
+	os.path.join(BASE_DIR, '../cart/static'),
 	os.path.join(BASE_DIR, 'static'),
 )
 
 # STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-# Amazon Web Services
+
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'sdev-static'
@@ -171,6 +175,7 @@ STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 # media storage
 
 MEDIA_URL = 'http://s3.{0}.amazonaws.com/{1}/media/'.format(AWS_S3_REGION_NAME, AWS_STORAGE_BUCKET_NAME)
+# MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIAFILES_LOCATION = 'media'
@@ -187,5 +192,5 @@ CART_SESSION_ID = 'cart'
 # SECURE_BROWSER_XSS_FILTER = True
 
 
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
