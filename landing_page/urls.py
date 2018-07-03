@@ -13,6 +13,6 @@ for example:
 
 
 urlpatterns = [
-    url(r'^/$', views.index_view, name='index'),
+    url(r'^$', views.index_view, name='index'),
     url(r'^about-me/$', views.about_me_view, name='about-me')
 ]
