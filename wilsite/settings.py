@@ -29,7 +29,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 # DEBUG = True
 
 # allow all host headers
-ALLOWED_HOSTS = ['wilsonwebapp.herokuapp.com', 'www.808prints.com','808prints.com','.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['wilsonwebapp.herokuapp.com', 'www.808prints.com', '808prints.com', '.herokuapp.com', 'localhost']
 
 
 # Application definition

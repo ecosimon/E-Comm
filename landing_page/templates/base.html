@@ -17,17 +17,17 @@
 	<div class="grid-container">
 		<div class="header-container">
 			<div class="header-logo">
-				<a href="{% url 'index' %}"><img class='logo' src='{% static "img/new-header.jpg" %}' alt='808 Logo'></a>
+				<a class=".non-text-dec" href="{% url 'index' %}"><img class='logo' src='{% static "img/new-header.jpg" %}' alt='808 Logo'></a>
 			</div>
 			
 			<div class="header-nav-menu">
 				<ul class="nav">
-					<li><a id='landing' href="{% url 'index' %}">Home</a></li>
-					<li><a href="{% url 'about-me' %}">About us</a></li>	
-					<li><a id="serv" href="{% url 'service' %}">Services</a></li>
-					<li><a id='project' href="{% url 'index' %}">Projects</a></li>
-					<li><a id="contacts" href="{% url 'service' %}">Contact</a></li>
-					<li><a href="{% url 'shop' %}">Shop</a></li>
+					<li><a class="header-tab" id='landing' href="{% url 'index' %}">Home</a></li>
+					<li><a class="header-tab" href="{% url 'about-me' %}">About us</a></li>	
+					<li><a class="header-tab" id="serv" href="{% url 'service' %}">Services</a></li>
+					<li><a class="header-tab" id='project' href="{% url 'index' %}">Projects</a></li>
+					<li><a class="header-tab" id="contacts" href="{% url 'service' %}">Contact</a></li>
+					<li><a class="header-tab" href="{% url 'shop' %}">Shop</a></li>
 				</ul>
 			</div>
 		</div>
@@ -38,8 +38,8 @@
 		</div>
 		<div class="footer-container">
 			<ul class="footer-nav">
-				<li><a href="http://facebook.com/808prints"><i class="fab fa-facebook"></i></a></li>
-				<li><a href="http://instagram.com/808prints"><i class="fab fa-instagram"></i></a></li>
+				<li class="in-block header-font"><a class="non-text-dec blk-color" href="http://facebook.com/808prints"><i class="fab fa-facebook"></i></a></li>
+				<li class="in-block header-font"><a class="non-text-dec blk-color" href="http://instagram.com/808prints"><i class="fab fa-instagram"></i></a></li>
 			</ul>
 		</div>
 	</div>
