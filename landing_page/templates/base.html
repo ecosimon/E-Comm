@@ -3,6 +3,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>808Prints</title>
 	<link rel="stylesheet" href="{% static 'css/main.css' %}"/> <!---By convention never name the same app name as the css--->
 	<link rel="stylesheet" href="{% static 'css/shop.css' %}"/>
@@ -37,11 +38,24 @@
 			{% endblock %}
 		</div>
 		<div class="footer-container">
+			
+			<!-- For testing media queries -->
+			<div class="resolution-check">
+			</div>
+		
 			<ul class="footer-nav">
 				<li class="in-block header-font"><a class="non-text-dec blk-color" href="http://facebook.com/808prints"><i class="fab fa-facebook"></i></a></li>
 				<li class="in-block header-font"><a class="non-text-dec blk-color" href="http://instagram.com/808prints"><i class="fab fa-instagram"></i></a></li>
 			</ul>
 		</div>
+		
 	</div>
+	
+	<!-- For testing media queries -->
+	<script type="text/javascript">
+		window.onresize = function(e) {
+			$(".resolution-check").text("Resolution: " + window.innerWidth + " x " + window.innerHeight);
+		}
+	</script>
 </body>
 </html>
