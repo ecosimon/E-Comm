@@ -25,8 +25,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
-# DEBUG = True
+# DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = True
 
 # allow all host headers
 ALLOWED_HOSTS = ['wilsonwebapp.herokuapp.com', 'www.808prints.com', '808prints.com', '.herokuapp.com', 'localhost']
@@ -84,20 +84,20 @@ WSGI_APPLICATION = 'wilsite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {
-	'default': dj_database_url.config(
-		default=config('DATABASE_URL')
-	)
-}
-
 # DATABASES = {
-    # 'default': {
-        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # 'NAME': config('DB_NAME'),
-        # 'USER': config('DB_USER'),
-        # 'PASSWORD': config('DB_PASSWORD'),
-    # }
+	# 'default': dj_database_url.config(
+		# default=config('DATABASE_URL')
+	# )
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+    }
+}
 
 
 # Password validation

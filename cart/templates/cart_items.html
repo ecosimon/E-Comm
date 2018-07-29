@@ -6,7 +6,7 @@
 	<p> testing testing </p>
 		{% for item in cart %}
 				<span>
-					<img src="">
+					<img src={{ item.photo_url.url }}>
 				</span>
 				<span>
 					{{ item.product.title }}
@@ -24,11 +24,14 @@
 					<a href="{% url 'remove' item.product.id %}">Remove</a>
 				</span>
 				<span>
-					$$ {{ item.price }}
-				</span>
-				<span>
 					$$ {{ item.total_price }}
 				</span>
+				<span>
+					xx {{ item.quantity }}
+				</span>
+				<span>
+					{{ item.size }}
+				</spam>
 				<hr>
 		{% endfor %}
 		

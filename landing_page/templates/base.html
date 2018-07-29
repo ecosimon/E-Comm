@@ -16,40 +16,37 @@
 </head>
 
 <body>
-	<div class="grid-container">
-		<div class="header-container">
-			<div class="header-logo">
-				<a class=".non-text-dec" href="{% url 'index' %}"><img class='logo' src='{% static "img/new-header.jpg" %}' alt='808 Logo'></a>
-			</div>
-			
-			<div class="header-nav-menu">
-				<ul class="nav">
-					<li><a class="header-tab" id='landing' href="{% url 'index' %}">Home</a></li>
-					<li><a class="header-tab" href="{% url 'about-me' %}">About us</a></li>	
-					<li><a class="header-tab" id="serv" href="{% url 'service' %}">Services</a></li>
-					<li><a class="header-tab" id='project' href="{% url 'index' %}">Projects</a></li>
-					<li><a class="header-tab" id="contacts" href="{% url 'service' %}">Contact</a></li>
-					<li><a class="header-tab" href="{% url 'shop' %}">Shop</a></li>
-				</ul>
-			</div>
+	<div class="header-container col-12 row">
+		<div class="header-logo col-2">
+			<a href="{% url 'index' %}"><img class='logo' src='{% static "img/new-header.jpg" %}' alt='808 Logo'></a>
 		</div>
-		
-		<div class="content-container">
-			{% block content %}
-			{% endblock %}
-		</div>
-		<div class="footer-container">
 			
-			<!-- For testing media queries -->
-			<div class="resolution-check">
-			</div>
-		
-			<ul class="footer-nav">
-				<li class="in-block header-font"><a class="non-text-dec blk-color" href="http://facebook.com/808prints"><i class="fab fa-facebook"></i></a></li>
-				<li class="in-block header-font"><a class="non-text-dec blk-color" href="http://instagram.com/808prints"><i class="fab fa-instagram"></i></a></li>
+		<div class="header-nav-menu col-10 row">
+			<ul class="nav">
+				<li class="header-tab col-2"><a id='landing' href="{% url 'index' %}">Home</a></li>
+				<li class="header-tab col-2"><a href="{% url 'about-me' %}">About</a></li>	
+				<li class="header-tab col-2"><a id="serv" href="{% url 'service' %}">Services</a></li>
+				<li class="header-tab col-2"><a id='project' href="{% url 'index' %}">Projects</a></li>
+				<li class="header-tab col-2"><a id="contacts" href="{% url 'service' %}">Contact</a></li>
+				<li class="header-tab col-2"><a href="{% url 'shop' %}">Shop</a></li>
 			</ul>
 		</div>
+	</div>
 		
+	<div class="content-container">
+		{% block content %}
+		{% endblock %}
+	</div>
+		
+	<div class="footer-container col-12 row">
+		<!-- For testing media queries -->
+		<div class="resolution-check">
+		</div>
+
+		<ul class="footer-nav">
+			<li class="foot-items col-1"><a href="http://facebook.com/808prints"><i class="fab fa-facebook"></i></a></li>
+			<li class="foot-items col-1"><a href="http://instagram.com/808prints"><i class="fab fa-instagram"></i></a></li>
+		</ul>
 	</div>
 	
 	<!-- For testing media queries -->

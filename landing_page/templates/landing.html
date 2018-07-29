@@ -4,20 +4,20 @@
 {% block content %}
 <div class="landing-logo" id='landing-logo'>
 	<div id="fade-in-logo">
-		<img src="{% static 'img/landin-foto.jpg' %}">
+		<img class="fade-logo" src="{% static 'img/landin-foto.jpg' %}">
 	</div>
 </div>
 
-<div class="landing-about-us" id='gallery'>
-	<div class="about-us">
+<div class="landing-gallery row" id='gallery'>
+	<div class="about-us col-3">
 		<p>808Prints is about engaging with the customer and giving the best quality designs that we can offer! Here are some of our work in the past!
 		</p>
 	</div>
 	
-	<div class="work-port-container">
+	<div class="work-port-container col-9">
 		<ul class="gallery">
 			{% for x in samples %}
-				<li><img class="image" src={{ x.photo_url.url }}><p class="hide">{{ x.descriptions }}</p></li>
+				<li class="col-2"><img class="image" src={{ x.photo_url.url }}><p class="hide">{{ x.descriptions }}</p></li>
 			{% endfor %}
 		</ul>
 	</div>
@@ -31,7 +31,7 @@
 	</div>
 </div>
 
-<div class="services-newsletter">
+<div class="landing-newsletter">
 	<form id="news" method="post">
 	{% csrf_token %}
 		<div class="container">
