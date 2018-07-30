@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block content %}
-<div class="landing-logo" id='landing-logo'>
+<div class="landing-logo">
 	<div id="fade-in-logo">
 		<img class="fade-logo" src="{% static 'img/landin-foto.jpg' %}">
 	</div>
@@ -53,21 +53,31 @@
 
 <script type="text/javascript">
 	$("html, body").hide();
-
+	
 	<!-- parallax processing, determines which target to scroll to -->
 	$(document).ready(function(e) {
 		location.hash = window.name;
 		var target = location.hash;
+		
+		$("#fade-in-logo").fadeIn(4000);
 	
-		if (target){
+		if (target == "#landing"){
+			setTimeout(function() {
+				$("html, body").scrollTop(0).show();
+				$("html, body").animate({
+					scrollTop: 0
+					}, 1500);
+				}, 0);
+		} else if (target){
 			setTimeout(function() {
 				$("html, body").scrollTop(0).show();
 				$("html, body").animate({
 					scrollTop: $(target).offset().top
 					}, 1500);
 				}, 0);
-		}else {
+		} else {
 			$("html, body").show();
+			$("#fade-in-logo").fadeIn(4000);
 		}
 	});	
 
@@ -105,7 +115,7 @@
 	<!-- logo scroll -->
 	$("#landing").click(function(e) {
 		$("body, html").animate({
-			scrollTop: $("#landing-logo").offset().top
+			scrollTop: 0
 			}, 1000);
 		e.preventDefault();
 	});
