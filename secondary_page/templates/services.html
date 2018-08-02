@@ -2,12 +2,11 @@
 {% load staticfiles %}
 
 {% block content %}
-<div id="serv-you" type="hidden"></div>
-<div class="wil-serv">
-	<div class="wil-text">
-		<p id='about-us-title'>Services</p>
-		<img src='{% static "img/service-fotoe.jpg" %}'/>
-		<p id='serv-text'>We offer full <b>premium screen printing services</b> specializing in plastisol and Soft-hand plastisol ink.  
+<div class="services-screenprinting">
+	<div class="print-container">
+		<p class='print-title'>Services</p>
+		<img class="print-image" src='{% static "img/service-fotoe.jpg" %}'/>
+		<p class='print-text'>We offer full <b>premium screen printing services</b> specializing in plastisol and Soft-hand plastisol ink.  
 		We have a full range of garments to select, from t-shirts, sweaters, hoodies, sweatpants, shorts, tote bags, 
 		etc. Bring your vision to life! <br/>808Prints has high customer service, fast turnaround time, and competitive pricing. 
 		<br/> Your FAST & QUICK quote is a few clicks away. <br/> ADDITIONAL SERVICES: <br/>
@@ -16,13 +15,13 @@
 		Please send as much information as possible so we can help you start your project quickly and 
 		efficiently or you can download our Work Order Form and send it to : info@808prints.com
 		<br/>
-		<a href="https://s3.amazonaws.com/sdev-static/static/pdf/WORK+ORDER+FORM.pdf">808 PDF Work Order Form</a> 
+		<a class="pdf-form"href="https://s3.amazonaws.com/sdev-static/static/pdf/WORK+ORDER+FORM.pdf">808 PDF Work Order Form</a> 
 		</p>
 	</div>
 </div>
 
-<div class="services-contact">
-	<form method="post">
+<div class="services-qoute">
+	<form class="qoute-form" method="post">
 	{% csrf_token %}
 		<div class="container">
 			<h1>Contact us for a quick, free quote</h1>
@@ -44,13 +43,16 @@
 
 <div class="service-shop-info">
 	<div class="contact-info">
-		<h1 id='contact'>CONTACT</h1>
-		<p id="left"><u><b>808Prints</b></u><br/>
+		<p class='contact-header'>CONTACT</p>
+		
+		<ul class="contact-items">
+			<li class="left"><u><b>808Prints</b></u><br/>
 		info@808prints.com<br/>2061 West 4th Street<br/>Brooklyn, NY 11223<br/><br/>
-		</p>
-		<p id="right">
-		In-Shop: BY APPOINTMENTS ONLY
-		</p>
+			</li>
+			<li class="right">In-Shop: BY APPOINTMENTS ONLY
+			</li>
+		</ul>
+		
 	</div>
 </div>
 
@@ -94,7 +96,7 @@ $(document).ready(function(e) {
 	<!-- landing services scroll -->
 	$("#serv").click(function(e){
 		$("html, body").animate({
-			scrollTop: $("#serv-you").offset().top
+			scrollTop: 0
 			},  1000);
 		e.preventDefault();
 	});
