@@ -25,7 +25,13 @@
 			<ul class="nav">
 				<li class="header-tab col-2"><a id='landing' href="{% url 'index' %}">Home</a></li>
 				<li class="header-tab col-2"><a href="{% url 'about-me' %}">About</a></li>	
-				<li class="header-tab col-2"><a id="serv" href="{% url 'service' %}">Services</a></li>
+				<li class="header-tab col-2 drop">
+					Services
+					<div class="drop-content">
+						<a id="serv" href="{% url 'service' %}">Screen Printing</a>
+						<a id="qoute" href="{% url 'service' %}">Get a Qoute</a>
+					</div>
+				</li>
 				<li class="header-tab col-2"><a id='project' href="{% url 'index' %}">Projects</a></li>
 				<li class="header-tab col-2"><a id="contacts" href="{% url 'service' %}">Contact</a></li>
 				<li class="header-tab col-2"><a href="{% url 'shop' %}">Shop</a></li>

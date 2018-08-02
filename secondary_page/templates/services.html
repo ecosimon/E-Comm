@@ -21,7 +21,7 @@
 	</div>
 </div>
 
-<div class="services-qoute">
+<div class="services-qoute" id="serv-qoute">
 	<form class="qoute-form" method="post">
 	{% csrf_token %}
 		<div class="container">
@@ -42,7 +42,7 @@
 </div>
 
 
-<div class="service-shop-info">
+<div class="service-shop-info" id="contact-info">
 	<div class="contact-info">
 		<p class='contact-header'>CONTACT</p>
 		
@@ -64,7 +64,14 @@ $(document).ready(function(e) {
 	location.hash = window.name;
 	var target = location.hash;
 	
-	if (target){
+	if (target == "#serv-you"){
+		setTimeout(function() {
+			$("html, body").scrollTop(0).show();
+			$("html, body").animate({
+				scrollTop: 0
+				}, 1000);
+			}, 0);
+	} else if (target){
 		setTimeout(function() {
 			$("html, body").scrollTop(0).show();
 			$("html, body").animate({
@@ -86,22 +93,29 @@ $(document).ready(function(e) {
 		window.name = "landing-logo";
 	});
 	
-	<!-- contact information scroll -->
-	$("#contacts").click(function(e){
+	<!-- screen printing scroll -->
+	$("#serv").click(function(e){
 		$("html, body").animate({
-			scrollTop: $("#contact").offset().top
+			scrollTop: 0 
 			}, 1000);
 		e.preventDefault();
 	});
 	
-	<!-- landing services scroll -->
-	$("#serv").click(function(e){
+	<!-- qoute scroll -->
+	$("#qoute").click(function(e){
 		$("html, body").animate({
-			scrollTop: 0
-			},  1000);
+			scrollTop: $("#serv-qoute").offset().top
+			}, 1000);
 		e.preventDefault();
 	});
-
+	
+	<!-- contact information scroll -->
+	$("#contacts").click(function(e){
+		$("html, body").animate({
+			scrollTop: $("#contact-info").offset().top
+			}, 1000);
+		e.preventDefault();
+	});
 </script>
 
 {% endblock %}
