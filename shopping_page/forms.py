@@ -5,11 +5,11 @@ class ShirtItem(forms.Form):
     name = forms.CharField(max_length=255)
     price = forms.DecimalField(max_digits=4, decimal_places=2)
     amount = forms.IntegerField(
-            label='Amount: ',
+            label='Amount',
             widget=forms.Select(choices=AMOUNT)
         )
     sizes = forms.CharField(
-            label='Size: ', 
+            label='Size', 
             widget=forms.Select(choices=SHIRT_SIZES)
         )
 	

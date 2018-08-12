@@ -4,11 +4,11 @@ from shopping_page.choices import *
 
 class CartAddProductForm(forms.Form):
     quantity = forms.IntegerField(
-            label='Amount: ',
+            label='Amount',
             widget=forms.Select(choices=AMOUNT)
         )
     size = forms.CharField(
-            label='Size: ', 
+            label='Size', 
             widget=forms.Select(choices=SHIRT_SIZES)
         )
     update = forms.BooleanField(required=False, initial=False, widget=forms.HiddenInput)

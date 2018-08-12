@@ -3,28 +3,38 @@
 
 {% block content %}
 <div class="shop-layout">
+	<div class="filler"></div>
 	<div class="content-information">
-		<div class="shopping-cart">
-			<p><i class="fas fa-shopping-cart"></i>
-			<a href="{% url 'cart_items' %}"><input type="button" value="View Cart"></a>
-			</p>
-		</div>
+	{% if cart.count is 0 %}
+		<p class="shop-info">Your cart is empty!</p>
+	{% else %}
+		<p class="shop-info">Your total items in cart: {{cart.count}}
+		</br><a href="{% url 'cart_items' %}">Go to Cart</a>
+		</p>
+	{% endif %}
 	</div>
 
 	<div class="shopping-catalog">
-		<div class="shirt-gallery">
+		<ul class="shirt-gallery">
 			{% for item in product %}
-				<li><img class="item">
-				<p>{{item.title}}</p><p>${{item.price}}</p>
+				<li><img class="item" src={{ item.photo_url.url }}>
+				<p class="item-text">{{item.title}} ${{item.price}}</p>
 				<form action='{% url "add" item.id %}' method='post'>
 					{% csrf_token %}
-					{{ cart_form }}
+					<div class="fieldwrapper">
+						{{ cart_form.quantity.label_tag }}
+						{{ cart_form.quantity }}
+					</div>
+					<div class="fieldwrapper">
+						{{ cart_form.size.label_tag }}
+						{{ cart_form.size }}
+					</div>
 					<input type="submit" value="Add to cart">
 				</form>
 				
 			    </li>
 			{% endfor %}
-		</div>
+		</ul>
 	</div>
 	
 </div>

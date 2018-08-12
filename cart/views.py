@@ -15,9 +15,9 @@ def cart_add(request, product_id):
     print(product.title)
     form = CartAddProductForm(request.POST)
     if form.is_valid():
-        print('works')
         cd = form.cleaned_data
-        cart.add(product=product, quantity=cd['quantity'], update_quantity=cd['update'])
+        cart.add(product=product, quantity=cd['quantity'], size=cd['size'],
+                  update_quantity=cd['update'])
     return redirect('cart_items')
 	
 def cart_remove(request, product_id):

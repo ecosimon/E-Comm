@@ -14,5 +14,6 @@ def shopping_view(request):
 	
     product = Product.objects.all()
     cart_form = CartAddProductForm()
-    context = {'product': product, 'cart_form': cart_form}
+    cart = Cart(request)
+    context = {'product': product, 'cart_form': cart_form, 'cart': cart}
     return render(request, 'shop_page.html', context)
