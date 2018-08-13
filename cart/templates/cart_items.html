@@ -3,26 +3,17 @@
 
 {% block content %}
 <div class="cart-layout">
+	<div class="filler"></div>
 	<div class="cart-container">
-		{% for items in cart %}
-			<hr>
-			<ul class="cart-header">
-				<li>Image:</li>
+		<div class="cart-body">
+			<ul>
+				<li>Image:<li>
 				<li>Item Name:</li>
-				<li>Size:</li>
-				<li>Quantity</li>
-				<li>Price per Shirt:</li>
-				<li>Total:</li>
+				<li>Quantity:</li>
+				<li>Total Price:</li>
 			</ul>
-			<ul class="cart-body">
-				<li><img src={{ items.photo_url.url }}></li>
-				<li>{{ items.title }}</li>
-				<li>{{ items.size }}</li>
-				<li>{{ items.count }}</li>
-				<li>{{ items.price }}</li>
-				<li>{{ items.get_total_prices }}</li>
-			<hr>
-		{% endfor %}
+		</div>
 	</div>
+	<div class="bottom-filler"></div>
 </div>
 {% endblock %}

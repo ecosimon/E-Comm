@@ -1,0 +1,549 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="cart-container">
+	<p> testing testing </p>
+		{% for item in cart %}
+				<span>
+					<img src={{ item.photo_url.url }}>
+				</span>
+				<span>
+					{{ item.product.title }}
+				</span>
+				<span>
+					<form action="{% url 'add' product_id=item.id %}" method='post'>
+						{% csrf_token %}
+						{{ item.update_quantity_form.quantity }}
+						{{ item.update_quantity_form.size }}
+						{{ item.update_quantity_form.update }}
+						<input type="submit" value="Update">
+					</form>
+				</span>
+				<span>
+					<a href="{% url 'remove' product_id=item.id %}">Remove</a>
+				</span>
+				<span>
+					$$ {{ item.total_price }}
+				</span>
+				<span>
+					Items: {{ item.quantity }}
+				</span>
+				<span>
+					Size: {{ item.size }}
+				</span>
+				<hr>
+		{% endfor %}
+		
+	<div style="float: right;">
+		<a href="{% url 'shop' %}"><input type="button" value="Back to shop"></a>
+		<a href=""><input type="button" value="Checkout"></a>
+	</div>		
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	font-family: "Georgia";
+	margin: 0;
+	padding: 0;
+}
+
+/* 12 column grid system */
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+[class*="col-"] {
+    float: left;
+	padding: 10px;
+}
+
+.row::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+/* Test case for resolution frame */
+.resolution-check {
+	position: fixed;
+	bottom: 20px;
+	left: 20px;
+	z-index: 10;
+}
+
+#WHITE-BACKGROUND,
+.header-container, .footer-container,
+.wil-text,
+.white-background {
+	background-color: #FFFFFF;
+}
+
+.header-container {
+	position: fixed;
+	height: 100px;
+	z-index: 1;
+	top: 0;
+	box-shadow: 0 0.1px 10px grey;
+}
+
+	.header-logo {
+		padding: 0;
+	}
+		.header-logo a {
+			text-decoration: none;
+		}
+			.logo {
+				height: 80px;
+				width: 180px;
+			}
+	
+	.header-nav-menu {
+		
+	}
+		.nav {
+			margin: 0;
+		}
+			.header-tab {
+				list-style-type: none;
+				font-size: 1.25em;
+				font-weight: bold;
+			}
+			.drop {
+				display: inline-block;
+				cursor: context-menu;
+			}
+				.drop-content {
+					display: none;
+					position: absolute;
+					background-color: white;
+					box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+					z-index: 1;
+				}
+					.drop-content a {
+						display: inherit;
+						padding: 15px;
+					}
+					.drop:hover .drop-content {
+						display: block;
+					}
+					.drop-content a:hover {
+						background-color: #f1f1f1;
+					}
+				.header-tab a {
+					text-decoration: none;
+					color: black;
+				}
+
+.content-container {
+	
+}
+
+.footer-container {
+	position: fixed;
+	bottom: 0;
+	height: 50px;
+	box-shadow: .5px 0 5px grey;
+	z-index: 1;
+}
+	.footer-nav {
+		margin: 0;
+		padding: 0;
+	}
+		.foot-items {
+			padding: 0;
+			list-style-type: none;
+			text-decoration: black;
+			float: right;
+			width: 3%;
+		}
+			.foot-items a {
+				color: black;
+				font-size: 1.75em;
+			}
+
+/* landing.html */
+.landing-logo {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+	#fade-in-logo {
+		display: none;
+	}
+		.fade-logo {
+			display: block;
+			margin: 100px 0 auto;
+			padding: 0;
+			max-width: 100%;
+			height: 420px;
+		}
+
+.landing-gallery {
+	background-image: url("../img/new-landing.jpg");
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100vh;
+	max-width: 100%;
+	margin: 0 50px;
+}
+	.about-us {
+		margin: 0;
+		padding: 130px 0 0 50px;
+		float: left;
+	}
+		.about-us p {
+			font-size: 1.75em;
+			font-weight: bold;
+			color: white;
+			padding: 0;
+		}
+	.work-port-container {
+		margin: 100px 0;
+	}
+		.gallery {
+			margin: 0;
+			list-style-type: none;
+		}
+			.gallery li {
+
+			}
+				.image {
+					height: 170px;
+					width: 100%;
+					box-shadow: 0 1px 5px white;
+				}
+					.hide {
+						display: none;
+					}
+	#g-modal {
+		display: none;
+		background-color: rgba(0,0,0,0.5);
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 3;
+		width: 100%;
+		height: 100%;
+	}
+		.modal-content {
+			background-color: #fefefe;
+			margin: 20px auto;
+			padding: 20px;
+			width: 60%;
+			height: 500px;
+		}
+			.close {
+				
+			}
+			#input-img {
+				display: block;
+				height: 300px;
+				width: auto;
+				margin: auto;
+			}
+			.text {
+				padding: 20px;
+				font-size: 1.5em;
+			}
+
+.landing-newsletter {
+	background-image: url("../img/land-page.jpg");
+	height: 100vh;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	max-width: 100%;
+	margin: 0 50px;
+}
+	#news {
+		padding: 100px 0 0 0;
+		width: 40%;
+		margin: 0 auto;
+	}
+		.container {
+			
+		}
+			#container-head {
+				
+			}
+
+/* about-wilson.html */
+.about-wil {
+	background-image: url("../img/land-page.jpg");
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100vh;
+	max-width: 100%;
+	margin: 0 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+	.wil-text {
+		height: 350px;
+		width: 60%;
+		box-shadow: 5px 10px 25px -10px black;
+	}
+		#about-us-title {
+			text-align: center;
+			font-weight: bold;
+			font-size: 1.5em;
+			margin: 20px;
+		}
+		.wil-text img {
+			float: right;
+			height: 200px;
+			width: 250px;
+			margin: 20px;
+		}
+		.about-us-text {
+			margin: 20px;
+			font-size: 1em;
+		}
+		.wil-text a {
+			text-decoration: none;
+			margin: 20px;
+			font-size: 1em;
+			font-weight: bold;
+		}
+
+::-webkit-scrollbar {
+	width: 0px;
+}
+
+.close:hover, .closer:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.close {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+
+.text {
+	padding: 20px;
+	font-size: 28px;
+}
+
+#g-modal {
+	display: none;
+	background-color: rgba(0,0,0,0.5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 3;
+	width: 100%;
+	height: 100%;
+}
+
+.hide {
+	display: none;
+}
+
+
+
+
+
+
+
+
+
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="shop-layout">
+	<div class="filler"></div>
+	<div class="content-information">
+		<p class="shop-info">Your total items in cart: {{cart.count}}</p>
+	</div>
+
+	<div class="shopping-catalog">
+		<ul class="shirt-gallery">
+			{% for item in product %}
+				<li>
+				<img class="item" src={{ item.photo_url.url }}>
+				<p class="item-text">{{item.title}}</p>
+				<p> {{ item.id }}</p>
+				<p class="item-text">${{item.price}}</p>
+				<form action='{% url "add" product_id=item.product.id %}' method='post'>
+					{% csrf_token %}
+					<!-- {{ cart_form }} -->
+					<div class="fieldwrapper">
+						{{ cart_form.quantity.label_tag }}
+						{{ cart_form.quantity }}
+					</div>
+					<div class="fieldwrapper">
+						{{ cart_form.size.label_tag }}
+						{{ cart_form.size }}
+					</div>
+					<input type="submit" value="Add to cart">
+				</form>
+			    </li>
+			{% endfor %}
+		</ul>
+	</div>
+	
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+.shop-layout {
+	height: 100vh;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-color: #FFF;
+	margin-left: 150px;
+	margin-right: 150px;
+	display: grid;
+	grid-template-rows: 100px 100px 1fr;
+	grid-template-areas: "filler"
+						 "information"
+						 "catalog";
+}
+
+.filler {
+	grid-area: filler;
+}
+
+.content-information {
+	grid-area: information;
+	display: flex;
+	justify-content: center;
+	
+}
+	.shop-info {
+		font-size: 1.5em;
+		font-weight: bold;
+	}
+
+.shopping-catalog {
+	grid-area: catalog;
+	background-color: #FFF;
+	display: flex;
+}
+	.shirt-gallery {
+		padding: 20px;
+		list-style-type: none;
+		flex-flow: row wrap;
+	}
+		.shirt-gallery li {
+			margin: 20px;
+			float: left;
+		}
+			.shirt-gallery li img {
+				height: 250px;
+				width: auto;
+				border: 1px solid black;
+				box-shadow: 2px 2px 10px 5px grey;
+			}
+			.item-text {
+				font-size: 1.25em;
+			}
+				.fieldwrapper {
+					font-size: 1.25em;
+				}
+
+
+
+
+from decimal import *
+from django.conf import settings
+from shopping_page.models import Product
+
+class Cart(object):
+    def __init__(self, request):
+        self.session = request.session
+        cart = self.session.get(settings.CART_SESSION_ID)
+        if not cart:
+            cart = self.session[settings.CART_SESSION_ID] = {}
+        self.cart = cart
+		
+    def add(self, product, quantity=1, size='Small', update_quantity=False):
+        product_id = str(product.id)
+        if product_id not in self.cart:
+            self.cart[product_id] = {'quantity': 0, 'price': str(product.price),
+                                        'size': None}
+        if update_quantity:
+            self.cart[product_id]['quantity'] = quantity
+            self.cart[product_id]['size'] = size
+        elif self.cart[product_id]['size'] == size:
+            self.cart[product_id]['quantity'] += quantity
+            
+        self.save()
+		
+    def save(self):
+        self.session[settings.CART_SESSION_ID] = self.cart
+        self.session.modified = True
+		
+    def remove(self, product):
+        product_id = str(product.id)
+        if product_id in self.cart:
+            del self.cart[product_id]
+            self.save()
+			
+    def __iter__(self):
+        product_ids = self.cart.keys()
+        products = Product.objects.filter(id__in=product_ids)
+        for product in products:
+            self.cart[str(product.id)]['product'] = product
+			
+        for item in self.cart.values():
+            item['price'] = Decimal(item['price'])
+            item['total_price'] = item['price'] * item['quantity']
+            yield item
+			
+    def count(self):
+        return sum(item['quantity'] for item in self.cart.values())
+		
+    def get_total_prices(self):
+        return sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values())
+		
+    def clear(self):
+        del self.session[settings.CART_SESSION_ID]
+        self.session.modified = True

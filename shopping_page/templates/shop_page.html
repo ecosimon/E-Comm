@@ -17,7 +17,7 @@
 	<div class="shopping-catalog">
 		<ul class="shirt-gallery">
 			{% for item in product %}
-				<li><img class="item" src={{ item.photo_url.url }}>
+				<li><img class="item" src="{{ item.photo_url.url }}"/>
 				<p class="item-text">{{item.title}} ${{item.price}}</p>
 				<form action='{% url "add" item.id %}' method='post'>
 					{% csrf_token %}
@@ -31,7 +31,6 @@
 					</div>
 					<input type="submit" value="Add to cart">
 				</form>
-				
 			    </li>
 			{% endfor %}
 		</ul>

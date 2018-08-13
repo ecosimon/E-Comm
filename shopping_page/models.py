@@ -8,7 +8,7 @@ class Product(models.Model):
 
     """
     title = models.CharField(max_length=255)
-    photo_url = models.FileField(upload_to='shopShirts/', blank=True, null=True)
+    photo_url = models.FileField(upload_to= 'shopShirts/', blank=True, null=True)
     price = models.DecimalField(max_digits=5, decimal_places=2, blank=True)
     quantity = models.PositiveSmallIntegerField(default=0)
     size = models.CharField(max_length=255)
