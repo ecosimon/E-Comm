@@ -5,14 +5,44 @@
 <div class="cart-layout">
 	<div class="filler"></div>
 	<div class="cart-container">
-		<div class="cart-body">
-			<ul>
-				<li>Image:<li>
-				<li>Item Name:</li>
-				<li>Quantity:</li>
-				<li>Total Price:</li>
+		<div class="dir-wrapper">
+		{% if cart is not None %}
+			<div class="cart-titles">
+				<ul class="titles">
+					<li>Image:</li>
+					<li>Item Name:</li>
+					<li>Unit Price:</li>
+					<li>Quantity:</li>
+					<li>Total Price:</li>
+				</ul>
+			</div>
+		</div>
+		{% endif %}
+		{% for items in cart %}
+			<div class="cart-content">
+				<ul class="content">
+					<li><img class="content-img" src="{{ items.product.photo_url.url }}"/></li>
+					<li>{{ items.product.title }}</li>
+					<li>{{ items.product.price }}</li>
+					<li>{{ items.quantity }}</li>
+					<li>{{ items.total_price }}</li>
+				</ul>
+			</div>
+		{% endfor %}
+		{% if cart is not None %}
+		<div class="cart-total">
+			<ul class="total">
+				<li>Total:</li>
+				<li>{{ cart.get_total_prices }}</li>
 			</ul>
 		</div>
+		<div class="submit-checkout">
+			<ul class="checkout">
+				<li><a href="{% url 'shop' %}">Continue Shopping</a></li>
+				<li class="square-loadout"><a href="">Checkout</a></li>
+			</ul>
+		</div>
+		{% endif %}
 	</div>
 	<div class="bottom-filler"></div>
 </div>

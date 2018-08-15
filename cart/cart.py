@@ -45,6 +45,7 @@ class Cart(object):
             yield item
 			
     def count(self):
+        print('work!!s')
         return sum(item['quantity'] for item in self.cart.values())
 		
     def get_total_prices(self):
