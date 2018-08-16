@@ -5,13 +5,14 @@
 <div class="shop-layout">
 	<div class="filler"></div>
 	<div class="content-information">
-	{% if cart.count is 0 %}
-		<p class="shop-info">Your cart is empty!</p>
-	{% else %}
-		<p class="shop-info">Your total items in cart: {{cart.count}}
-		</br><a href="{% url 'cart_items' %}">Go to Cart</a>
-		</p>
-	{% endif %}
+		<ul class="shop-info">
+		{% if cart.count is 0 %}
+			<li class="text-bold">Your cart is empty!</li>
+		{% else %}
+			<li class="text-bold">Your total items in cart: {{cart.count}}</li>
+			<li class="logo-color"><a href="{% url 'cart_items' %}">Go to Cart</a></li>
+		{% endif %}
+		</ul>
 	</div>
 
 	<div class="shopping-catalog">

@@ -20,7 +20,7 @@
 <body>
 	<div class="header-container col-12 row">
 		<div class="header-logo col-2">
-			<a href="{% url 'index' %}"><img class='logo' src='{% static "img/new-header.jpg" %}' alt='808 Logo'></a>
+			<a id="project" href="{% url 'index' %}"><img class='logo' src='{% static "img/new-header.jpg" %}' alt='808 Logo'></a>
 		</div>
 			
 		<div class="header-nav-menu col-10 row">
@@ -31,7 +31,7 @@
 					Services
 					<div class="drop-content">
 						<a id="serv" href="{% url 'service' %}">Screen Printing</a>
-						<a id="qoute" href="{% url 'service' %}">Get a Qoute</a>
+						<a id="qoute" href="{% url 'service' %}">Get a Quote</a>
 					</div>
 				</li>
 				<li class="header-tab col-2"><a id='project' href="{% url 'index' %}">Projects</a></li>
